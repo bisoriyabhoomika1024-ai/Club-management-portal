@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Corner – College Club Management Portal</title>
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main & Landing CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/landing.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="site-header">
+        <div class="container navbar">
+            <a href="index.html" class="brand-logo">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <span>Club Corner</span>
+            </a>
+
+            <nav class="nav-links" id="nav-links">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="clubs.html" class="nav-link">Clubs</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="#about" class="nav-link">About</a>
+            </nav>
+
+            <div class="nav-actions">
+                <div id="nav-user-container">
+                    <!-- Populated dynamically by auth.initNavUser() -->
+                    <a href="login.html" class="btn btn-primary nav-login-btn">
+                        <i class="fa-solid fa-right-to-bracket"></i> Login
+                    </a>
+                </div>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+
+        <!-- 1. HERO SECTION -->
+        <section class="hero-section">
+            <div class="container hero-grid">
+                <div class="hero-text">
+                    <div class="hero-tagline">
+                        <i class="fa-solid fa-sparkles"></i>
+                        <span>“Discover. Connect. Participate.”</span>
+                    </div>
+                    <h1 class="hero-title">
+                        Your Gateway to <br>
+                        <span class="text-gradient">College Clubs & Activities</span>
+                    </h1>
+                    <p class="hero-description">
+                        Club Corner is the unified campus platform connecting curious students with 
+                        thriving technical, cultural, literary, and leadership communities. Explore clubs, 
+                        register for hackathons and workshops, and cultivate lifelong collegiate memories.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="clubs.html" class="btn btn-primary btn-lg">
+                            <i class="fa-solid fa-compass"></i> Explore Clubs
+                        </a>
+                        <a href="login.html" class="btn btn-secondary btn-lg">
+                            <i class="fa-solid fa-arrow-right-to-bracket"></i> Student / Faculty Login
+                        </a>
+                    </div>
+                    <div class="hero-highlights">
+                        <div class="hero-highlight-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>8+ Active Societies</span>
+                        </div>
+                        <div class="hero-highlight-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>Real-time Registrations</span>
+                        </div>
+                        <div class="hero-highlight-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>Verified Faculty Mentors</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Graphic Mockup -->
+                <div class="hero-visual">
+                    <div class="hero-card-stack">
+                        <div class="hero-floating-badge badge-top-right">
+                            <i class="fa-solid fa-trophy" style="color: #f59e0b; font-size: 1.25rem;"></i>
+                            <div>
+                                <strong style="display:block; font-size:0.85rem; color:var(--slate-800);">ByteSprint 2026</strong>
+                                <span style="font-size:0.75rem; color:var(--slate-500);">Registration Open</span>
+                            </div>
+                        </div>
+
+                        <div class="hero-main-card">
+                            <div class="hero-preview-header">
+                                <div>
+                                    <h4 style="font-size:1.05rem; font-weight:800; color:var(--slate-900);">Active Campus Clubs</h4>
+                                    <span style="font-size:0.78rem; color:var(--slate-500);">Join and collaborate today</span>
+                                </div>
+                                <span class="badge badge-tech"><i class="fa-solid fa-bolt"></i> Live</span>
+                            </div>
+
+                            <div class="hero-preview-club">
+                                <div class="club-icon-circle" style="background:#2563eb;">
+                                    <i class="fa-solid fa-microchip"></i>
+                                </div>
+                                <div style="flex:1;">
+                                    <strong style="font-size:0.9rem; color:var(--slate-900);">IEEE Student Branch</strong>
+                                    <p style="font-size:0.75rem; color:var(--slate-500); margin:0;">140+ Active Engineers</p>
+                                </div>
+                                <span class="badge badge-tech">Technical</span>
+                            </div>
+
+                            <div class="hero-preview-club">
+                                <div class="club-icon-circle" style="background:#059669;">
+                                    <i class="fa-solid fa-code"></i>
+                                </div>
+                                <div style="flex:1;">
+                                    <strong style="font-size:0.9rem; color:var(--slate-900);">Coding Club</strong>
+                                    <p style="font-size:0.75rem; color:var(--slate-500); margin:0;">230+ Competitive Coders</p>
+                                </div>
+                                <span class="badge badge-tech">Algorithms</span>
+                            </div>
+
+                            <div class="hero-preview-club">
+                                <div class="club-icon-circle" style="background:#ea4335;">
+                                    <i class="fa-brands fa-google"></i>
+                                </div>
+                                <div style="flex:1;">
+                                    <strong style="font-size:0.9rem; color:var(--slate-900);">GDG / Developer Club</strong>
+                                    <p style="font-size:0.75rem; color:var(--slate-500); margin:0;">Cloud & Flutter Study Jams</p>
+                                </div>
+                                <span class="badge badge-tech">Google Dev</span>
+                            </div>
+                        </div>
+
+                        <div class="hero-floating-badge badge-bottom-left">
+                            <i class="fa-solid fa-shield-halved" style="color: #10b981; font-size: 1.25rem;"></i>
+                            <div>
+                                <strong style="display:block; font-size:0.85rem; color:var(--slate-800);">Role-Protected</strong>
+                                <span style="font-size:0.75rem; color:var(--slate-500);">Student & Teacher Access</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Ribbon -->
+        <section class="stats-ribbon">
+            <div class="container stats-grid">
+                <div class="stat-item">
+                    <h3>8+</h3>
+                    <p>Accredited Student Clubs</p>
+                </div>
+                <div class="stat-item">
+                    <h3>1,200+</h3>
+                    <p>Registered Students</p>
+                </div>
+                <div class="stat-item">
+                    <h3>45+</h3>
+                    <p>Annual Campus Events</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Student-Driven Energy</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. FEATURED CLUBS SECTION -->
+        <section class="featured-clubs-section" id="clubs-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">Discover Communities</span>
+                    <h2 class="section-title">Featured College Clubs</h2>
+                    <p class="section-desc">
+                        Whether your passion lies in software development, mechatronics, parliamentary debate, or fine arts, find your tribe below.
+                    </p>
+                </div>
+
+                <!-- Dynamic container rendered by landing.js -->
+                <div class="clubs-grid" id="featured-clubs-container">
+                    <!-- Populated dynamically -->
+                </div>
+
+                <div style="text-align: center; margin-top: 1rem;">
+                    <a href="clubs.html" class="btn btn-outline btn-lg">
+                        <i class="fa-solid fa-grid-2"></i> View All 8 Campus Clubs
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. UPCOMING EVENTS SECTION -->
+        <section class="upcoming-events-section" id="events-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">Mark Your Calendar</span>
+                    <h2 class="section-title">Upcoming Events & Hackathons</h2>
+                    <p class="section-desc">
+                        Participate in national hackathons, technical bootcamps, and cultural festivals. One-click registration available for students.
+                    </p>
+                </div>
+
+                <!-- Dynamic container rendered by landing.js -->
+                <div class="events-grid" id="upcoming-events-container">
+                    <!-- Populated dynamically -->
+                </div>
+
+                <div style="text-align: center; margin-top: 1rem;">
+                    <a href="events.html" class="btn btn-outline btn-lg">
+                        <i class="fa-regular fa-calendar"></i> Browse All Events Schedule
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. WHY JOIN / ABOUT SECTION -->
+        <section class="why-join-section" id="about">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">Why Club Corner?</span>
+                    <h2 class="section-title">Enrich Your College Experience</h2>
+                    <p class="section-desc">
+                        Engineering is more than textbooks. Engaging in collegiate clubs builds industry-ready competencies, teamwork, and leadership.
+                    </p>
+                </div>
+
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <h3 class="benefit-title">Practical Technical Skills</h3>
+                        <p class="benefit-desc">
+                            Apply textbook theories to real-world code, robotics fabrication, and design sprints through peer-guided workshops and hackathons.
+                        </p>
+                    </div>
+
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fa-solid fa-users-gear"></i>
+                        </div>
+                        <h3 class="benefit-title">Leadership & Teamwork</h3>
+                        <p class="benefit-desc">
+                            Organize national fests, manage sponsorships, lead technical tracks, and acquire essential soft skills that employers prioritize.
+                        </p>
+                    </div>
+
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fa-solid fa-certificate"></i>
+                        </div>
+                        <h3 class="benefit-title">Verified Participation</h3>
+                        <p class="benefit-desc">
+                            Keep an immutable record of club memberships and event participation, backed by faculty conveners and department heads.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. CALL TO ACTION BANNER -->
+        <section class="cta-banner">
+            <div class="container cta-content">
+                <h2 class="cta-title">Ready to Step Up Your Campus Life?</h2>
+                <p class="cta-desc">
+                    Log in with your college account to join clubs, register for upcoming events, or administer student organizations.
+                </p>
+                <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
+                    <a href="login.html" class="btn btn-primary btn-lg" style="background:#ffffff; color:var(--primary);">
+                        <i class="fa-solid fa-right-to-bracket"></i> Login to Portal
+                    </a>
+                    <a href="clubs.html" class="btn btn-outline btn-lg" style="color:#ffffff; border-color:#ffffff;">
+                        <i class="fa-solid fa-compass"></i> Explore All Clubs
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>
+                        <i class="fa-solid fa-graduation-cap text-primary"></i> Club Corner
+                    </h3>
+                    <p>
+                        A comprehensive college club management portal designed to streamline student memberships, 
+                        event registrations, and faculty oversight in one unified web hub.
+                    </p>
+                    <span class="project-tag">
+                        <i class="fa-solid fa-code"></i> 1st-Year B.Tech CSE Micro Project
+                    </span>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="clubs.html">All Clubs</a></li>
+                        <li><a href="events.html">Events Calendar</a></li>
+                        <li><a href="login.html">Login Portal</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Quick Portals</h4>
+                    <ul>
+                        <li><a href="student-dashboard.html">Student Dashboard</a></li>
+                        <li><a href="teacher-dashboard.html">Teacher Dashboard</a></li>
+                        <li><a href="clubs.html?cat=Technical">Technical Clubs</a></li>
+                        <li><a href="clubs.html?cat=Cultural">Cultural Clubs</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>College Contact</h4>
+                    <p style="font-size: 0.88rem; color: var(--slate-400); margin-bottom: 0.5rem;">
+                        <i class="fa-solid fa-location-dot"></i> Central Campus, Tech Block 3<br>
+                        Department of Computer Science & Engineering
+                    </p>
+                    <p style="font-size: 0.88rem; color: var(--slate-400); margin-bottom: 0.75rem;">
+                        <i class="fa-solid fa-envelope"></i> clubs.convenor@college.edu
+                    </p>
+                    <button id="reset-demo-data-btn" class="reset-demo-btn">
+                        <i class="fa-solid fa-rotate-left"></i> Reset Demo Data
+                    </button>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Club Corner – College Club Management Portal. All rights reserved.</p>
+                <p>Designed with HTML5, CSS3, & Vanilla JavaScript (LocalStorage Persistence).</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/landing.js"></script>
+</body>
+</html>
