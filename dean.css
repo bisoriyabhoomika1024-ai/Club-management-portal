@@ -1,0 +1,537 @@
+/* ===================================================================
+   Club Corner - Super Admin (Dean) Styles (dean.css)
+   Executive Academic Administration Theme (Royal Navy & Gold Accents)
+   =================================================================== */
+
+:root {
+    --dean-primary: #1e1b4b;       /* Deep Royal Navy */
+    --dean-secondary: #312e81;     /* Midnight Indigo */
+    --dean-accent: #d97706;        /* Academic Gold / Amber */
+    --dean-accent-hover: #b45309;  /* Deep Gold */
+    --dean-accent-light: #fef3c7;  /* Gold Tint */
+    --dean-dark: #090d16;          /* Darkest Slate */
+}
+
+/* Badge Dean */
+.badge-dean {
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fde68a;
+    font-weight: 700;
+}
+
+/* Dean Login Page */
+.dean-login-body {
+    background: radial-gradient(circle at 10% 20%, rgba(30, 27, 75, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%), #0f172a;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #f8fafc;
+}
+
+.dean-login-card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 500px;
+    border-radius: var(--radius-xl);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    padding: 2.75rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+    color: var(--slate-900);
+}
+
+.dean-login-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #d97706 0%, #f59e0b 50%, #312e81 100%);
+}
+
+.dean-crest-icon {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+    color: #f59e0b;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 1.25rem auto;
+    box-shadow: 0 8px 16px rgba(30, 27, 75, 0.25);
+    border: 2px solid #fde68a;
+}
+
+.dean-security-alert-box {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1rem;
+    font-size: 0.8rem;
+    color: #92400e;
+    margin-bottom: 1.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+/* ===================================================================
+   Dean Dashboard Wrapper & Layout
+   =================================================================== */
+.dean-app-wrapper {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f8fafc;
+}
+
+/* Dean Sidebar */
+.dean-sidebar {
+    width: 285px;
+    background: #090d16; /* Deepest Obsidian Slate */
+    color: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.25);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dean-sidebar .sidebar-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dean-brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.dean-brand-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 1.25rem;
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.35);
+}
+
+.dean-super-badge {
+    font-size: 0.65rem;
+    font-weight: 800;
+    background: rgba(217, 119, 6, 0.2);
+    border: 1px solid rgba(217, 119, 6, 0.5);
+    color: #fbbf24;
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--radius-full);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+/* Dean Profile Mini in Sidebar */
+.dean-sidebar-profile {
+    margin: 1.25rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.dean-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, #1e1b4b 0%, #d97706 100%);
+    color: #ffffff;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    border: 2px solid rgba(251, 191, 36, 0.4);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.dean-meta {
+    overflow: hidden;
+}
+
+.dean-meta .name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dean-meta .role {
+    font-size: 0.75rem;
+    color: #fbbf24;
+    font-weight: 600;
+}
+
+/* Dean Sidebar Menu Items */
+.dean-sidebar .sidebar-menu {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.dean-sidebar .menu-item {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.75rem 1rem;
+    color: #94a3b8;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+    cursor: pointer;
+    text-decoration: none;
+    border-left: 3px solid transparent;
+}
+
+.dean-sidebar .menu-item i {
+    font-size: 1.1rem;
+    width: 22px;
+    color: #64748b;
+    transition: var(--transition);
+}
+
+.dean-sidebar .menu-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+}
+
+.dean-sidebar .menu-item:hover i {
+    color: #fbbf24;
+}
+
+.dean-sidebar .menu-item.active {
+    background: rgba(217, 119, 6, 0.15);
+    color: #ffffff;
+    border-left-color: #d97706;
+}
+
+.dean-sidebar .menu-item.active i {
+    color: #fbbf24;
+}
+
+.dean-sidebar .sidebar-footer {
+    padding: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Dean Main Area */
+.dean-main {
+    flex: 1;
+    margin-left: 285px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Dean Top Bar */
+.dean-topbar {
+    height: 72px;
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 0 2.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 90;
+}
+
+.dean-topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.dean-section-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dean-topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+/* Dean Content Body */
+.dean-content-body {
+    padding: 2.25rem;
+    flex: 1;
+}
+
+/* Dean Welcome Hero Banner */
+.dean-welcome-banner {
+    background: linear-gradient(135deg, #090d16 0%, #1e1b4b 60%, #312e81 100%);
+    border-radius: var(--radius-xl);
+    padding: 2.25rem 2.5rem;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.2);
+    border: 1px solid #334155;
+    position: relative;
+    overflow: hidden;
+}
+
+.dean-welcome-banner::after {
+    content: '';
+    position: absolute;
+    right: -20px;
+    bottom: -40px;
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle, rgba(217, 119, 6, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.dean-banner-text h2 {
+    color: #ffffff;
+    font-size: 1.95rem;
+    font-weight: 800;
+    margin-bottom: 0.35rem;
+}
+
+.dean-banner-text p {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    max-width: 650px;
+}
+
+/* Dean Metrics Grid */
+.dean-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2.25rem;
+}
+
+.dean-metric-card {
+    background: #ffffff;
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    transition: var(--transition);
+}
+
+.dean-metric-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: #cbd5e1;
+    transform: translateY(-2px);
+}
+
+.metric-gold { background: #fef3c7; color: #d97706; }
+.metric-crimson { background: #fee2e2; color: #dc2626; }
+
+/* Status Badges */
+.badge-status-active {
+    background: #d1fae5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+
+.badge-status-inactive {
+    background: #f1f5f9;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+}
+
+.badge-status-suspended {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+    font-weight: 700;
+}
+
+/* User Management Actions */
+.btn-action-view {
+    background: #e0f2fe;
+    color: #0369a1;
+}
+.btn-action-view:hover {
+    background: #0284c7;
+    color: #ffffff;
+}
+
+.btn-action-reset {
+    background: #fef3c7;
+    color: #b45309;
+}
+.btn-action-reset:hover {
+    background: #d97706;
+    color: #ffffff;
+}
+
+.btn-action-suspend {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+.btn-action-suspend:hover {
+    background: #dc2626;
+    color: #ffffff;
+}
+
+.btn-action-activate {
+    background: #d1fae5;
+    color: #047857;
+}
+.btn-action-activate:hover {
+    background: #059669;
+    color: #ffffff;
+}
+
+/* User Profile Dossier Modal */
+.user-dossier-grid {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
+}
+
+.dossier-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: var(--radius-xl);
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+    color: #ffffff;
+    font-size: 2.25rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.dossier-info-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+.dossier-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.dossier-item .label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--slate-500);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+}
+
+.dossier-item .val {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--slate-900);
+}
+
+/* Audit Log Table */
+.log-action-badge {
+    padding: 0.25rem 0.55rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: monospace;
+}
+
+.log-ACCOUNT_SUSPENDED { background: #fee2e2; color: #991b1b; }
+.log-ACCOUNT_ACTIVE    { background: #d1fae5; color: #065f46; }
+.log-PASSWORD_RESET    { background: #fef3c7; color: #92400e; }
+.log-PROFILE_UPDATED   { background: #e0f2fe; color: #075985; }
+.log-DEAN_LOGIN        { background: #ede9fe; color: #5b21b6; }
+.log-SYSTEM_INIT       { background: #f1f5f9; color: #334155; }
+
+/* Responsive Dean */
+@media (max-width: 1100px) {
+    .dean-metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .dean-sidebar {
+        transform: translateX(-100%);
+    }
+
+    .dean-sidebar.mobile-open {
+        transform: translateX(0);
+    }
+
+    .dean-main {
+        margin-left: 0;
+    }
+
+    .dean-topbar {
+        padding: 0 1.25rem;
+    }
+
+    .dean-content-body {
+        padding: 1.25rem;
+    }
+
+    .dean-welcome-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.25rem;
+    }
+
+    .dean-metrics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dossier-info-list {
+        grid-template-columns: 1fr;
+    }
+}

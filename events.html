@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Events – Club Corner College Portal</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/landing.css">
+</head>
+<body>
+
+    <!-- Site Header -->
+    <header class="site-header">
+        <div class="container navbar">
+            <a href="index.html" class="brand-logo">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <span>Club Corner</span>
+            </a>
+
+            <nav class="nav-links" id="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="clubs.html" class="nav-link">Clubs</a>
+                <a href="events.html" class="nav-link active">Events</a>
+                <a href="index.html#about" class="nav-link">About</a>
+            </nav>
+
+            <div class="nav-actions">
+                <div id="nav-user-container">
+                    <a href="login.html" class="btn btn-primary nav-login-btn">
+                        <i class="fa-solid fa-right-to-bracket"></i> Login
+                    </a>
+                </div>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content py-5">
+        <div class="container">
+
+            <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+                <span class="section-subtitle">Calendar of Activities</span>
+                <h1 class="section-title">Upcoming College Events & Hackathons</h1>
+                <p class="section-desc">
+                    Register for technical challenges, workshops, debates, and musical fests organized by verified student clubs.
+                </p>
+            </div>
+
+            <!-- Filter & Search Bar -->
+            <div class="filter-bar">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="event-search-input" placeholder="Search events by title, venue, or host club...">
+                </div>
+
+                <div class="category-pills">
+                    <button type="button" class="pill-btn active" data-category="all">All Events</button>
+                    <button type="button" class="pill-btn" data-category="Technical">Technical</button>
+                    <button type="button" class="pill-btn" data-category="Cultural">Cultural</button>
+                    <button type="button" class="pill-btn" data-category="Literary">Literary</button>
+                    <button type="button" class="pill-btn" data-category="Arts">Arts</button>
+                    <button type="button" class="pill-btn" data-category="Entrepreneurship">Entrepreneurship</button>
+                </div>
+            </div>
+
+            <!-- Events Grid -->
+            <div class="events-grid" id="public-events-grid">
+                <!-- Rendered by JavaScript -->
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3><i class="fa-solid fa-graduation-cap text-primary"></i> Club Corner</h3>
+                    <p>College Club Management Portal for 1st-Year CSE Micro Project.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="clubs.html">All Clubs</a></li>
+                        <li><a href="events.html">Events Calendar</a></li>
+                        <li><a href="login.html">Login Portal</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Portals</h4>
+                    <ul>
+                        <li><a href="student-dashboard.html">Student Dashboard</a></li>
+                        <li><a href="teacher-dashboard.html">Teacher Dashboard</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <p style="font-size:0.85rem; color:var(--slate-400);">Department of Computer Science & Engineering</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Club Corner. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        let eventCategory = 'all';
+        let eventSearch = '';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            auth.initNavUser();
+            renderPublicEvents();
+
+            // Category filter pills
+            const pills = document.querySelectorAll('.category-pills .pill-btn');
+            pills.forEach(pill => {
+                pill.addEventListener('click', () => {
+                    pills.forEach(p => p.classList.remove('active'));
+                    pill.classList.add('active');
+                    eventCategory = pill.getAttribute('data-category');
+                    renderPublicEvents();
+                });
+            });
+
+            // Search input
+            const searchInput = document.getElementById('event-search-input');
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    eventSearch = e.target.value.toLowerCase().trim();
+                    renderPublicEvents();
+                });
+            }
+        });
+
+        function renderPublicEvents() {
+            const container = document.getElementById('public-events-grid');
+            if (!container) return;
+
+            let events = db.getEvents();
+            const currentUser = auth.getCurrentUser();
+
+            if (eventCategory !== 'all') {
+                events = events.filter(e => e.category && e.category.toLowerCase() === eventCategory.toLowerCase());
+            }
+
+            if (eventSearch) {
+                events = events.filter(e => 
+                    e.title.toLowerCase().includes(eventSearch) ||
+                    e.clubName.toLowerCase().includes(eventSearch) ||
+                    e.venue.toLowerCase().includes(eventSearch)
+                );
+            }
+
+            if (events.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state" style="grid-column: 1 / -1;">
+                        <i class="fa-solid fa-calendar-xmark"></i>
+                        <h4>No Events Found</h4>
+                        <p>No events match your current search criteria. Try selecting "All Events" or another search term.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = events.map(event => {
+                const isRegistered = currentUser && currentUser.role === 'student' ? 
+                    db.isStudentRegisteredForEvent(currentUser.email, event.id) : false;
+                const dateObj = new Date(event.date);
+                const month = dateObj.toLocaleString('default', { month: 'short' });
+                const day = dateObj.getDate() || '15';
+
+                return `
+                    <div class="event-card">
+                        <div class="event-card-header">
+                            <div class="event-date-badge">
+                                <span class="month">${month}</span>
+                                <span class="day">${day}</span>
+                            </div>
+                            <div class="event-info">
+                                <span class="event-club-tag"><i class="fa-solid fa-flag"></i> ${event.clubName}</span>
+                                <h4 class="event-title">${event.title}</h4>
+                            </div>
+                        </div>
+                        <div class="event-details-list">
+                            <div class="event-detail-item">
+                                <i class="fa-regular fa-clock"></i>
+                                <span>${event.time}</span>
+                            </div>
+                            <div class="event-detail-item">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span>${event.venue}</span>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.88rem; color: var(--slate-600); line-height: 1.5; margin: 0.5rem 0;">
+                            ${event.description}
+                        </p>
+                        <div class="event-card-actions">
+                            <span class="text-muted" style="font-size: 0.82rem;">
+                                <i class="fa-solid fa-user-group text-primary"></i> ${event.registeredCount || 0} / ${event.maxSeats || 100} Registered
+                            </span>
+                            ${currentUser && currentUser.role === 'student' ? `
+                                <button onclick="handlePublicRegister('${event.id}')" class="btn ${isRegistered ? 'btn-secondary' : 'btn-primary'} btn-sm">
+                                    <i class="fa-solid ${isRegistered ? 'fa-check' : 'fa-ticket'}"></i> ${isRegistered ? 'Registered' : 'Register Now'}
+                                </button>
+                            ` : `
+                                <a href="login.html?redirect=events.html" class="btn btn-primary btn-sm">
+                                    <i class="fa-solid fa-ticket"></i> Register
+                                </a>
+                            `}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function handlePublicRegister(eventId) {
+            const user = auth.getCurrentUser();
+            if (!user || user.role !== 'student') {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            if (db.isStudentRegisteredForEvent(user.email, eventId)) {
+                auth.showToast('You are already registered for this event.', 'info');
+                return;
+            }
+
+            const res = db.registerStudentForEvent(user, eventId);
+            if (res.success) {
+                auth.showToast('Registration successful! Saved to your Student Dashboard.', 'success');
+                renderPublicEvents();
+            } else {
+                auth.showToast(res.message, 'warning');
+            }
+        }
+    </script>
+</body>
+</html>

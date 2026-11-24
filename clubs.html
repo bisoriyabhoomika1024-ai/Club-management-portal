@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Clubs – Club Corner College Portal</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/landing.css">
+</head>
+<body>
+
+    <!-- Site Header -->
+    <header class="site-header">
+        <div class="container navbar">
+            <a href="index.html" class="brand-logo">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <span>Club Corner</span>
+            </a>
+
+            <nav class="nav-links" id="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="clubs.html" class="nav-link active">Clubs</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="index.html#about" class="nav-link">About</a>
+            </nav>
+
+            <div class="nav-actions">
+                <div id="nav-user-container">
+                    <a href="login.html" class="btn btn-primary nav-login-btn">
+                        <i class="fa-solid fa-right-to-bracket"></i> Login
+                    </a>
+                </div>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content py-5">
+        <div class="container">
+
+            <!-- Catalog Page Header -->
+            <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+                <span class="section-subtitle">Student Organizations</span>
+                <h1 class="section-title">Explore All Campus Clubs</h1>
+                <p class="section-desc">
+                    Find active societies, join like-minded student creators, and participate in departmental and college-wide initiatives.
+                </p>
+            </div>
+
+            <!-- Filter & Search Bar -->
+            <div class="filter-bar">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="club-search-input" placeholder="Search clubs by name, technology, or domain...">
+                </div>
+
+                <div class="category-pills">
+                    <button type="button" class="pill-btn active" data-category="all">All Clubs</button>
+                    <button type="button" class="pill-btn" data-category="Technical">Technical</button>
+                    <button type="button" class="pill-btn" data-category="Cultural">Cultural</button>
+                    <button type="button" class="pill-btn" data-category="Literary">Literary</button>
+                    <button type="button" class="pill-btn" data-category="Arts">Art & Design</button>
+                    <button type="button" class="pill-btn" data-category="Entrepreneurship">Entrepreneurship</button>
+                </div>
+            </div>
+
+            <!-- Clubs Grid -->
+            <div class="clubs-grid" id="all-clubs-grid">
+                <!-- Loaded dynamically by js/clubs.js -->
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3><i class="fa-solid fa-graduation-cap text-primary"></i> Club Corner</h3>
+                    <p>College Club Management Portal for 1st-Year CSE Micro Project.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="clubs.html">All Clubs</a></li>
+                        <li><a href="events.html">Events Calendar</a></li>
+                        <li><a href="login.html">Login Portal</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Portals</h4>
+                    <ul>
+                        <li><a href="student-dashboard.html">Student Dashboard</a></li>
+                        <li><a href="teacher-dashboard.html">Teacher Dashboard</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <p style="font-size:0.85rem; color:var(--slate-400);">Department of Computer Science & Engineering</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Club Corner. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/clubs.js"></script>
+</body>
+</html>

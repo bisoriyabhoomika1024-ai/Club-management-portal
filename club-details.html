@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Details – Club Corner College Portal</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/landing.css">
+</head>
+<body>
+
+    <!-- Site Header -->
+    <header class="site-header">
+        <div class="container navbar">
+            <a href="index.html" class="brand-logo">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <span>Club Corner</span>
+            </a>
+
+            <nav class="nav-links" id="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="clubs.html" class="nav-link active">Clubs</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="index.html#about" class="nav-link">About</a>
+            </nav>
+
+            <div class="nav-actions">
+                <div id="nav-user-container">
+                    <a href="login.html" class="btn btn-primary nav-login-btn">
+                        <i class="fa-solid fa-right-to-bracket"></i> Login
+                    </a>
+                </div>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- Rendered dynamically by js/clubs.js setupClubDetails() -->
+        <div id="club-details-container">
+            <div class="container py-5 text-center">
+                <i class="fa-solid fa-spinner fa-spin text-primary" style="font-size: 2.5rem;"></i>
+                <p class="mt-3 text-muted">Loading club information...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3><i class="fa-solid fa-graduation-cap text-primary"></i> Club Corner</h3>
+                    <p>College Club Management Portal for 1st-Year CSE Micro Project.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="clubs.html">All Clubs</a></li>
+                        <li><a href="events.html">Events Calendar</a></li>
+                        <li><a href="login.html">Login Portal</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Portals</h4>
+                    <ul>
+                        <li><a href="student-dashboard.html">Student Dashboard</a></li>
+                        <li><a href="teacher-dashboard.html">Teacher Dashboard</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Department</h4>
+                    <p style="font-size:0.85rem; color:var(--slate-400);">Department of Computer Science & Engineering</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Club Corner. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/clubs.js"></script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+/* ===================================================================
+   Club Corner - Login System Styles (login.css)
+   Split-screen / Card layout with Role Switcher & 1-Click Demo Login
+   =================================================================== */
+
+.login-page-body {
+    background: radial-gradient(circle at 10% 20%, rgba(79, 70, 229, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(14, 165, 233, 0.05) 0%, transparent 40%),
+                #f8fafc;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-container-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 1.5rem;
+}
+
+.login-card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 480px;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--border-color);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #4f46e5 0%, #0ea5e9 100%);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.login-header-icon {
+    width: 54px;
+    height: 54px;
+    background: var(--primary-50);
+    color: var(--primary);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin: 0 auto 1rem auto;
+}
+
+.login-title {
+    font-size: 1.65rem;
+    font-weight: 800;
+    color: var(--slate-900);
+    margin-bottom: 0.35rem;
+}
+
+.login-subtitle {
+    color: var(--slate-500);
+    font-size: 0.92rem;
+}
+
+/* Role Selector Tabs */
+.role-selector {
+    display: flex;
+    background: var(--slate-100);
+    padding: 0.35rem;
+    border-radius: var(--radius-lg);
+    margin-bottom: 1.75rem;
+    gap: 0.25rem;
+}
+
+.role-tab-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.65rem 0.75rem;
+    border: none;
+    background: transparent;
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--slate-600);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.role-tab-btn i {
+    font-size: 0.95rem;
+}
+
+.role-tab-btn.active {
+    background: #ffffff;
+    color: var(--primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.role-tab-btn[data-role="teacher"].active {
+    color: #0d9488;
+}
+
+/* Form Controls */
+.login-form .form-group {
+    margin-bottom: 1.25rem;
+}
+
+.input-with-icon {
+    position: relative;
+}
+
+.input-with-icon i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--slate-400);
+}
+
+.input-with-icon .form-control {
+    padding-left: 2.75rem;
+}
+
+.password-toggle-btn {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--slate-400);
+    cursor: pointer;
+    padding: 0.25rem;
+}
+
+.password-toggle-btn:hover {
+    color: var(--slate-700);
+}
+
+/* Demo Credentials Box */
+.demo-accounts-box {
+    margin-top: 1.75rem;
+    padding: 1.25rem;
+    background: var(--slate-50);
+    border: 1px dashed var(--slate-300);
+    border-radius: var(--radius-lg);
+}
+
+.demo-accounts-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--slate-700);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.demo-account-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.demo-pill-btn {
+    background: #ffffff;
+    border: 1px solid var(--slate-200);
+    border-radius: var(--radius-md);
+    padding: 0.6rem 0.5rem;
+    text-align: left;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.demo-pill-btn:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.demo-pill-role {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-bottom: 0.2rem;
+}
+
+.demo-pill-btn[data-demo="teacher"] .demo-pill-role {
+    color: #0d9488;
+}
+
+.demo-pill-email {
+    font-size: 0.72rem;
+    color: var(--slate-500);
+    font-family: monospace;
+}
+
+.login-back-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.88rem;
+}

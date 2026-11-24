@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dean Super Admin Dashboard – Club Corner</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dean.css">
+</head>
+<body>
+
+    <div class="dean-app-wrapper">
+
+        <!-- Dean Executive Dark Sidebar -->
+        <aside class="dean-sidebar" id="dean-sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="dean-brand-logo">
+                    <div class="dean-brand-icon">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <span>Club Corner</span>
+                </a>
+                <span class="dean-super-badge">Super Admin</span>
+            </div>
+
+            <!-- Dean Executive Profile Mini -->
+            <div class="dean-sidebar-profile">
+                <div class="dean-avatar" id="dean-avatar-display">KS</div>
+                <div class="dean-meta">
+                    <div class="name" id="dean-name-display">Prof. K. R. Sharma</div>
+                    <div class="role" id="dean-role-display">Dean of Student Affairs</div>
+                </div>
+            </div>
+
+            <!-- Sidebar Navigation Menu -->
+            <nav class="sidebar-menu">
+                <a href="#dashboard" class="menu-item active" data-view="dashboard">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Overview</span>
+                </a>
+                <a href="#user-management" class="menu-item" data-view="user-management">
+                    <i class="fa-solid fa-users-gear"></i>
+                    <span>User Management</span>
+                </a>
+                <a href="#clubs-oversight" class="menu-item" data-view="clubs-oversight">
+                    <i class="fa-solid fa-network-wired"></i>
+                    <span>Clubs Governance</span>
+                </a>
+                <a href="#events-oversight" class="menu-item" data-view="events-oversight">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span>Events Directory</span>
+                </a>
+                <a href="#audit-logs" class="menu-item" data-view="audit-logs">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>Security & Audit Logs</span>
+                </a>
+                <a href="#profile" class="menu-item" data-view="profile">
+                    <i class="fa-solid fa-user-shield"></i>
+                    <span>Dean Profile</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button type="button" class="btn btn-outline w-100" id="dean-logout-btn" style="color:#ef4444; border-color:rgba(239,68,68,0.3);">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Secure Logout
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Super Admin Area -->
+        <div class="dean-main">
+
+            <!-- Top Administrative Navigation Bar -->
+            <header class="dean-topbar">
+                <div class="dean-topbar-left">
+                    <button type="button" class="mobile-sidebar-toggle" id="mobile-dean-sidebar-toggle" aria-label="Toggle sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <h2 class="dean-section-title" id="dean-current-title">
+                        <i class="fa-solid fa-shield-halved" style="color:#d97706;"></i> Institutional Super Admin Overview
+                    </h2>
+                </div>
+
+                <div class="dean-topbar-right">
+                    <button type="button" class="btn btn-sm" style="background:#fef3c7; color:#92400e; border:1px solid #fde68a;" onclick="switchDeanView('user-management')">
+                        <i class="fa-solid fa-users-gear"></i> Manage Users
+                    </button>
+                    <a href="index.html" class="btn btn-outline btn-sm" target="_blank" title="View Public Portal">
+                        <i class="fa-solid fa-globe"></i> Public View
+                    </a>
+                </div>
+            </header>
+
+            <!-- Main Content Area -->
+            <main class="dean-content-body">
+
+                <!-- 1. DASHBOARD OVERVIEW -->
+                <section class="dashboard-view active" id="dean-view-dashboard">
+                    
+                    <!-- Welcome Hero Banner -->
+                    <div class="dean-welcome-banner">
+                        <div class="dean-banner-text">
+                            <h2>Welcome, <span id="dean-welcome-name">Prof. K. R. Sharma</span></h2>
+                            <p>
+                                Office of the Dean – Central Collegiate Governance Hub. Oversee all enrolled students, 
+                                faculty coordinators, accredited societies, and security audit logs with full supervisory authority.
+                            </p>
+                        </div>
+                        <div>
+                            <span class="badge" style="background: rgba(217, 119, 6, 0.25); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.5); padding: 0.6rem 1.15rem; font-size: 0.88rem;">
+                                <i class="fa-solid fa-crown"></i> Super Admin Privileges Active
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Statistics Cards Grid (Phase 4 Metrics) -->
+                    <div class="dean-metrics-grid">
+                        <div class="dean-metric-card" onclick="switchDeanView('user-management')" style="cursor:pointer;">
+                            <div>
+                                <h4 id="stat-total-students" style="font-size:2rem; font-weight:800; color:#0f172a; line-height:1; margin-bottom:0.35rem;">7</h4>
+                                <p style="font-size:0.85rem; color:#64748b; font-weight:600;">Total Students</p>
+                            </div>
+                            <div class="metric-icon-box metric-blue">
+                                <i class="fa-solid fa-user-graduate"></i>
+                            </div>
+                        </div>
+
+                        <div class="dean-metric-card" onclick="switchDeanView('user-management')" style="cursor:pointer;">
+                            <div>
+                                <h4 id="stat-total-teachers" style="font-size:2rem; font-weight:800; color:#0f172a; line-height:1; margin-bottom:0.35rem;">4</h4>
+                                <p style="font-size:0.85rem; color:#64748b; font-weight:600;">Faculty Coordinators</p>
+                            </div>
+                            <div class="metric-icon-box metric-teal">
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                            </div>
+                        </div>
+
+                        <div class="dean-metric-card" onclick="switchDeanView('user-management')" style="cursor:pointer;">
+                            <div>
+                                <h4 id="stat-total-users" style="font-size:2rem; font-weight:800; color:#0f172a; line-height:1; margin-bottom:0.35rem;">12</h4>
+                                <p style="font-size:0.85rem; color:#64748b; font-weight:600;">Total Registered Accounts</p>
+                            </div>
+                            <div class="metric-icon-box metric-gold">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                        </div>
+
+                        <div class="dean-metric-card" onclick="switchDeanView('user-management')" style="cursor:pointer;">
+                            <div>
+                                <h4 id="stat-active-accounts" style="font-size:2rem; font-weight:800; color:#0f172a; line-height:1; margin-bottom:0.35rem;">11</h4>
+                                <p style="font-size:0.85rem; color:#64748b; font-weight:600;">Active Accounts</p>
+                            </div>
+                            <div class="metric-icon-box" style="background:#d1fae5; color:#059669;">
+                                <i class="fa-solid fa-circle-check"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Secondary Metrics Row -->
+                    <div class="dean-metrics-grid" style="margin-top:-1rem;">
+                        <div class="dean-metric-card" onclick="switchDeanView('user-management')" style="cursor:pointer;">
+                            <div>
+                                <h4 id="stat-suspended-accounts" style="font-size:2rem; font-weight:800; color:#dc2626; line-height:1; margin-bottom:0.35rem;">1</h4>
+                                <p style="font-size:0.85rem; color:#64748b; font-weight:600;">Suspended Accounts</p>
+                            </div>
+                            <div class="metric-icon-box metric-crimson">
+                                <i class="fa-solid fa-user-slash"></i>
+                            </div>
+                        </div>
+
+                        <div class="dean-metric-card" onclick="switchDeanView('clubs-oversight')" style="cursor:pointer;">
+                            <div>
+                                <h4 id="stat-total-clubs" style="font-size:2rem; font-weight:800; color:#0f172a; line-height:1; margin-bottom:0.35rem;">8</h4>
+                                <p style="font-size:0.85rem; color:#64748b; font-weight:600;">Registered Clubs</p>
+                            </div>
+                            <div class="metric-icon-box metric-purple">
+                                <i class="fa-solid fa-network-wired"></i>
+                            </div>
+                        </div>
+
+                        <div class="dean-metric-card" onclick="switchDeanView('events-oversight')" style="cursor:pointer;">
+                            <div>
+                                <h4 id="stat-total-events" style="font-size:2rem; font-weight:800; color:#0f172a; line-height:1; margin-bottom:0.35rem;">8</h4>
+                                <p style="font-size:0.85rem; color:#64748b; font-weight:600;">Campus Events</p>
+                            </div>
+                            <div class="metric-icon-box metric-blue">
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </div>
+                        </div>
+
+                        <div class="dean-metric-card" onclick="switchDeanView('events-oversight')" style="cursor:pointer;">
+                            <div>
+                                <h4 id="stat-total-regs" style="font-size:2rem; font-weight:800; color:#0f172a; line-height:1; margin-bottom:0.35rem;">5</h4>
+                                <p style="font-size:0.85rem; color:#64748b; font-weight:600;">Event Registrations</p>
+                            </div>
+                            <div class="metric-icon-box metric-gold">
+                                <i class="fa-solid fa-ticket"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Users Preview Table Panel -->
+                    <div class="card mb-4" style="border-radius:var(--radius-xl); overflow:hidden;">
+                        <div class="panel-header">
+                            <h3 class="panel-title">
+                                <i class="fa-solid fa-users text-primary"></i> Registered Accounts Directory (Recent)
+                            </h3>
+                            <button type="button" class="btn btn-outline btn-sm" onclick="switchDeanView('user-management')">
+                                Full User Management <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        <div class="table-responsive" style="border:none; box-shadow:none;">
+                            <table class="custom-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name & Email</th>
+                                        <th>Role</th>
+                                        <th>Department / Branch</th>
+                                        <th>Account Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dean-recent-users-tbody">
+                                    <!-- Populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Clubs Roster Preview Panel -->
+                    <div class="card" style="border-radius:var(--radius-xl); overflow:hidden;">
+                        <div class="panel-header">
+                            <h3 class="panel-title">
+                                <i class="fa-solid fa-network-wired text-primary"></i> College Societies & Leadership Roster
+                            </h3>
+                            <button type="button" class="btn btn-outline btn-sm" onclick="switchDeanView('clubs-oversight')">
+                                View All Clubs <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        <div class="table-responsive" style="border:none; box-shadow:none;">
+                            <table class="custom-table">
+                                <thead>
+                                    <tr>
+                                        <th>Club Name</th>
+                                        <th>Category</th>
+                                        <th>Student President</th>
+                                        <th>Faculty Coordinator</th>
+                                        <th>Members</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dean-clubs-overview-tbody">
+                                    <!-- Populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </section>
+
+                <!-- 2. USER MANAGEMENT (PHASE 3) -->
+                <section class="dashboard-view" id="dean-view-user-management">
+                    <div class="card" style="border-radius:var(--radius-xl); overflow:hidden; padding:1.75rem;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem;">
+                            <div>
+                                <h3 class="font-bold" style="font-size:1.35rem; color:var(--slate-900);">
+                                    <i class="fa-solid fa-users-gear" style="color:#d97706;"></i> User Management & Permissions
+                                </h3>
+                                <p class="text-muted" style="margin:0; font-size:0.9rem;">
+                                    View all students and teachers, edit profile parameters, suspend/reinstate accounts, and initiate secure password resets.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Filter & Search Bar -->
+                        <div class="filter-bar" style="margin-bottom:1.5rem;">
+                            <div class="search-box">
+                                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                                <input type="text" id="dean-user-search" placeholder="Search by user name, email, roll number, or department...">
+                            </div>
+
+                            <!-- Role Filter Pills -->
+                            <div class="category-pills" id="user-role-filter-pills">
+                                <button type="button" class="pill-btn active" data-role="all">All Roles</button>
+                                <button type="button" class="pill-btn" data-role="student">Students</button>
+                                <button type="button" class="pill-btn" data-role="teacher">Teachers</button>
+                                <button type="button" class="pill-btn" data-role="dean">Dean Admin</button>
+                            </div>
+
+                            <!-- Status Filter Select -->
+                            <div>
+                                <select id="dean-user-status-filter" class="form-control" style="width: auto; min-width: 140px;">
+                                    <option value="all">All Statuses</option>
+                                    <option value="active">Active Only</option>
+                                    <option value="inactive">Inactive Only</option>
+                                    <option value="suspended">Suspended Only</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Full User Roster Table -->
+                        <div class="table-responsive">
+                            <table class="custom-table">
+                                <thead>
+                                    <tr>
+                                        <th>User Profile</th>
+                                        <th>Role</th>
+                                        <th>Roll / Cabin & Dept</th>
+                                        <th>Joined Date</th>
+                                        <th>Status</th>
+                                        <th>Administrative Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dean-users-tbody">
+                                    <!-- Populated dynamically by dean.js -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. CLUBS GOVERNANCE & OVERSIGHT -->
+                <section class="dashboard-view" id="dean-view-clubs-oversight">
+                    <div class="card" style="border-radius:var(--radius-xl); overflow:hidden; padding:1.75rem;">
+                        <h3 class="font-bold mb-1" style="font-size:1.35rem; color:var(--slate-900);">
+                            <i class="fa-solid fa-network-wired" style="color:#d97706;"></i> College Clubs & Societies Oversight
+                        </h3>
+                        <p class="text-muted mb-4" style="font-size:0.9rem;">
+                            Supervisory directory of all recognized collegiate clubs, their elected student leadership, and appointed faculty coordinators.
+                        </p>
+
+                        <div class="table-responsive">
+                            <table class="custom-table">
+                                <thead>
+                                    <tr>
+                                        <th>Club Name</th>
+                                        <th>Category</th>
+                                        <th>Student President</th>
+                                        <th>Faculty Coordinator</th>
+                                        <th>Active Members</th>
+                                        <th>Official Contact</th>
+                                        <th>Inspect</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dean-clubs-oversight-tbody">
+                                    <!-- Populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. EVENTS DIRECTORY & OVERSIGHT -->
+                <section class="dashboard-view" id="dean-view-events-oversight">
+                    <div class="card" style="border-radius:var(--radius-xl); overflow:hidden; padding:1.75rem;">
+                        <h3 class="font-bold mb-1" style="font-size:1.35rem; color:var(--slate-900);">
+                            <i class="fa-solid fa-calendar-check" style="color:#d97706;"></i> Campus Events & Hackathons Directory
+                        </h3>
+                        <p class="text-muted mb-4" style="font-size:0.9rem;">
+                            Monitoring list of all department-sanctioned symposiums, competitive hackathons, and cultural festivals.
+                        </p>
+
+                        <div class="table-responsive">
+                            <table class="custom-table">
+                                <thead>
+                                    <tr>
+                                        <th>Event Name & Summary</th>
+                                        <th>Host Society</th>
+                                        <th>Date & Time</th>
+                                        <th>Venue</th>
+                                        <th>Registrations</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dean-events-oversight-tbody">
+                                    <!-- Populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 5. SECURITY & AUDIT LOGS (PHASE 5) -->
+                <section class="dashboard-view" id="dean-view-audit-logs">
+                    <div class="card" style="border-radius:var(--radius-xl); overflow:hidden; padding:1.75rem;">
+                        <h3 class="font-bold mb-1" style="font-size:1.35rem; color:var(--slate-900);">
+                            <i class="fa-solid fa-shield-halved" style="color:#d97706;"></i> Security & Administrative Audit Trail
+                        </h3>
+                        <p class="text-muted mb-4" style="font-size:0.9rem;">
+                            Immutable log of administrative interventions, account status modifications, password resets, and Dean authentications.
+                        </p>
+
+                        <div class="table-responsive">
+                            <table class="custom-table">
+                                <thead>
+                                    <tr>
+                                        <th>Timestamp</th>
+                                        <th>Action Code</th>
+                                        <th>Admin Actor</th>
+                                        <th>Target User</th>
+                                        <th>Action Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dean-audit-logs-tbody">
+                                    <!-- Populated dynamically by dean.js -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 6. DEAN PROFILE -->
+                <section class="dashboard-view" id="dean-view-profile">
+                    <div class="card" style="border-radius:var(--radius-xl); overflow:hidden; padding:2rem; max-width:800px;">
+                        <h3 class="font-bold mb-1" style="font-size:1.35rem; color:var(--slate-900);">
+                            <i class="fa-solid fa-user-shield" style="color:#d97706;"></i> Office of the Dean – Profile Credentials
+                        </h3>
+                        <p class="text-muted mb-4" style="font-size:0.9rem;">
+                            Super Admin institutional parameters.
+                        </p>
+
+                        <form id="dean-profile-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="dean-prof-name">Dean Full Name</label>
+                                    <input type="text" id="dean-prof-name" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="dean-prof-email">Official Email (Read-only)</label>
+                                    <input type="email" id="dean-prof-email" class="form-control" disabled style="background:var(--slate-100);">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="dean-prof-dept">Administrative Division</label>
+                                    <input type="text" id="dean-prof-dept" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="dean-prof-desig">Executive Designation</label>
+                                    <input type="text" id="dean-prof-desig" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="dean-prof-cabin">Executive Chamber / Office Location</label>
+                                <input type="text" id="dean-prof-cabin" class="form-control" required>
+                            </div>
+
+                            <div style="text-align: right; margin-top: 1.5rem;">
+                                <button type="submit" class="btn btn-primary btn-lg" style="background:#d97706; border-color:#d97706;">
+                                    <i class="fa-solid fa-floppy-disk"></i> Update Dean Credentials
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- MODAL 1: VIEW USER DOSSIER -->
+    <div class="modal-overlay" id="user-details-modal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title">
+                    <i class="fa-solid fa-address-card" style="color:#d97706;"></i> User Account Dossier
+                </h3>
+                <button type="button" class="modal-close" onclick="closeModal('user-details-modal')">&times;</button>
+            </div>
+            <div class="modal-body" id="user-dossier-content">
+                <!-- Populated dynamically -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('user-details-modal')">Close Dossier</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: EDIT USER PROFILE -->
+    <div class="modal-overlay" id="edit-user-modal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title">
+                    <i class="fa-solid fa-user-pen text-primary"></i> Edit Account Profile
+                </h3>
+                <button type="button" class="modal-close" onclick="closeModal('edit-user-modal')">&times;</button>
+            </div>
+            <form id="edit-user-form">
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="edit-user-name">Full Name</label>
+                            <input type="text" id="edit-user-name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="edit-user-email-display">Email Address (Immutable)</label>
+                            <input type="email" id="edit-user-email-display" class="form-control" disabled style="background:var(--slate-100);">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="edit-user-role">Assigned System Role</label>
+                            <select id="edit-user-role" class="form-control">
+                                <option value="student">Student</option>
+                                <option value="teacher">Teacher / Faculty</option>
+                                <option value="dean">Dean (Super Admin)</option>
+                            </select>
+                            <span class="text-xs text-muted" style="display:block; margin-top:4px;">
+                                *Role governance safeguards prevent self-escalation or accidental Dean demotion.
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="edit-user-status">Account Access Status</label>
+                            <select id="edit-user-status" class="form-control">
+                                <option value="Active">Active</option>
+                                <option value="Inactive">Inactive</option>
+                                <option value="Suspended">Suspended</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="edit-user-dept">Department / Branch</label>
+                            <input type="text" id="edit-user-dept" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="edit-user-year-desig">Academic Year / Designation</label>
+                            <input type="text" id="edit-user-year-desig" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="edit-user-roll-cabin">Roll Number / Faculty Cabin</label>
+                        <input type="text" id="edit-user-roll-cabin" class="form-control">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('edit-user-modal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Profile Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 3: SUSPEND USER -->
+    <div class="modal-overlay" id="suspend-user-modal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title" style="color:#b91c1c;">
+                    <i class="fa-solid fa-ban text-danger"></i> Suspend User Account
+                </h3>
+                <button type="button" class="modal-close" onclick="closeModal('suspend-user-modal')">&times;</button>
+            </div>
+            <form id="suspend-user-form">
+                <div class="modal-body">
+                    <div style="background:#fee2e2; border:1px solid #fecaca; border-radius:var(--radius-md); padding:1rem; margin-bottom:1.25rem;">
+                        <strong style="color:#991b1b; display:block; margin-bottom:0.25rem;">Confirm Academic Suspension</strong>
+                        <p style="color:#b91c1c; font-size:0.88rem; margin:0;">
+                            Target: <strong id="suspend-user-name">User</strong><br>
+                            Suspended users are immediately barred from logging in or registering for events across all portals.
+                        </p>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="suspend-reason-input">Official Reason / Directive</label>
+                        <textarea id="suspend-reason-input" class="form-control" rows="3" placeholder="e.g. Code of conduct review, disciplinary inquiry, or administrative hold..." required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('suspend-user-modal')">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Confirm Account Suspension</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 4: RESET PASSWORD -->
+    <div class="modal-overlay" id="reset-password-modal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title">
+                    <i class="fa-solid fa-key" style="color:#d97706;"></i> Administrative Password Reset
+                </h3>
+                <button type="button" class="modal-close" onclick="closeModal('reset-password-modal')">&times;</button>
+            </div>
+            <form id="reset-password-form">
+                <div class="modal-body">
+                    <div style="background:#fef3c7; border:1px solid #fde68a; border-radius:var(--radius-md); padding:1rem; margin-bottom:1.25rem;">
+                        <strong style="color:#92400e; display:block; margin-bottom:0.25rem;">Security Protocol: Password Protection</strong>
+                        <p style="color:#b45309; font-size:0.85rem; margin:0;">
+                            Account: <strong id="reset-user-email-target">User</strong><br>
+                            In compliance with Phase 5 Security Standards, user passwords are encrypted and never shown to the Dean. You may generate or assign a new temporary password below.
+                        </p>
+                    </div>
+
+                    <div style="margin-bottom:1rem; text-align:right;">
+                        <button type="button" class="btn btn-outline btn-sm" onclick="generateSecureTempPassword()">
+                            <i class="fa-solid fa-dice"></i> Generate Random Secure Password
+                        </button>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="reset-new-password">New Temporary Password</label>
+                        <input type="text" id="reset-new-password" class="form-control" placeholder="Minimum 6 characters" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="reset-confirm-password">Confirm New Password</label>
+                        <input type="text" id="reset-confirm-password" class="form-control" placeholder="Re-type password" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('reset-password-modal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary" style="background:#d97706; border-color:#d97706;">Apply New Password</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dean.js"></script>
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard – Club Corner</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/landing.css">
+    <link rel="stylesheet" href="css/student.css">
+</head>
+<body>
+
+    <div class="app-wrapper">
+
+        <!-- Student Sidebar -->
+        <aside class="student-sidebar" id="student-sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="brand-logo" style="font-size: 1.15rem;">
+                    <div class="brand-icon" style="width:34px; height:34px; font-size:1rem;">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <span>Club Corner</span>
+                </a>
+                <span class="portal-tag">Student</span>
+            </div>
+
+            <!-- Student Profile Summary Mini-Card -->
+            <div class="sidebar-user-mini">
+                <div class="student-avatar" id="student-avatar-display">AS</div>
+                <div class="student-meta">
+                    <div class="name" id="student-name-display">Aarav Sharma</div>
+                    <div class="roll" id="student-roll-display">26CSE042</div>
+                </div>
+            </div>
+
+            <!-- Sidebar Navigation Menu -->
+            <nav class="sidebar-menu">
+                <a href="#dashboard" class="menu-item active" data-view="dashboard">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#explore-clubs" class="menu-item" data-view="explore-clubs">
+                    <i class="fa-solid fa-compass"></i>
+                    <span>Explore Clubs</span>
+                </a>
+                <a href="#my-clubs" class="menu-item" data-view="my-clubs">
+                    <i class="fa-solid fa-users"></i>
+                    <span>My Clubs</span>
+                </a>
+                <a href="#upcoming-events" class="menu-item" data-view="upcoming-events">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <span>Upcoming Events</span>
+                </a>
+                <a href="#my-registrations" class="menu-item" data-view="my-registrations">
+                    <i class="fa-solid fa-ticket"></i>
+                    <span>My Registrations</span>
+                </a>
+                <a href="#notifications" class="menu-item" data-view="notifications">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>Notifications</span>
+                    <span class="menu-badge" id="sidebar-notif-badge">3</span>
+                </a>
+                <a href="#profile" class="menu-item" data-view="profile">
+                    <i class="fa-solid fa-user-gear"></i>
+                    <span>Profile</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button type="button" class="btn btn-outline w-100" id="student-logout-btn" style="color:var(--danger); border-color:var(--slate-200);">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="app-main">
+
+            <!-- Top Navigation Bar -->
+            <header class="top-navbar">
+                <div class="top-nav-left">
+                    <button type="button" class="mobile-sidebar-toggle" id="mobile-student-sidebar-toggle" aria-label="Toggle sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <h2 class="page-breadcrumb-title" id="current-view-title">Student Dashboard</h2>
+                </div>
+
+                <div class="top-nav-right">
+                    <a href="clubs.html" class="btn btn-outline btn-sm" target="_blank" title="View Public Catalog">
+                        <i class="fa-solid fa-globe"></i> Public Portal
+                    </a>
+                    <button type="button" class="icon-badge-btn" onclick="switchView('notifications')" title="Notifications">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="notification-count" id="notif-badge-count">3</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Dashboard Content Container -->
+            <main class="content-body">
+
+                <!-- VIEW 1: DASHBOARD OVERVIEW -->
+                <section class="dashboard-view active" id="view-dashboard">
+                    
+                    <!-- Welcome Hero Banner -->
+                    <div class="student-hero-banner">
+                        <div class="banner-text">
+                            <h2>Welcome, <span id="welcome-student-name">Aarav Sharma</span>!</h2>
+                            <p>
+                                Stay updated with the latest college fests, technical hackathons, and activities.
+                                Join active societies to collaborate, build projects, and represent our college.
+                            </p>
+                        </div>
+                        <div class="banner-stats-pill">
+                            <i class="fa-solid fa-calendar-check text-warning"></i>
+                            <span>Spring Semester 2026</span>
+                        </div>
+                    </div>
+
+                    <!-- 4 Metric Cards -->
+                    <div class="stats-cards-grid">
+                        <div class="stat-metric-card" onclick="switchView('my-clubs')" style="cursor:pointer;">
+                            <div class="stat-icon-wrapper stat-icon-indigo">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                            <div class="stat-metric-content">
+                                <h4 id="stat-clubs-joined">2</h4>
+                                <p>Clubs Joined</p>
+                            </div>
+                        </div>
+
+                        <div class="stat-metric-card" onclick="switchView('upcoming-events')" style="cursor:pointer;">
+                            <div class="stat-icon-wrapper stat-icon-blue">
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </div>
+                            <div class="stat-metric-content">
+                                <h4 id="stat-upcoming-events">8</h4>
+                                <p>Upcoming Events</p>
+                            </div>
+                        </div>
+
+                        <div class="stat-metric-card" onclick="switchView('my-registrations')" style="cursor:pointer;">
+                            <div class="stat-icon-wrapper stat-icon-emerald">
+                                <i class="fa-solid fa-ticket"></i>
+                            </div>
+                            <div class="stat-metric-content">
+                                <h4 id="stat-events-registered">2</h4>
+                                <p>Events Registered</p>
+                            </div>
+                        </div>
+
+                        <div class="stat-metric-card" onclick="switchView('notifications')" style="cursor:pointer;">
+                            <div class="stat-icon-wrapper stat-icon-amber">
+                                <i class="fa-solid fa-bell"></i>
+                            </div>
+                            <div class="stat-metric-content">
+                                <h4 id="stat-new-notifs">3</h4>
+                                <p>New Notifications</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recommended Clubs Section -->
+                    <div class="dashboard-row-section">
+                        <div class="section-title-bar">
+                            <h3><i class="fa-solid fa-star text-warning"></i> Recommended Clubs</h3>
+                            <button type="button" class="btn btn-outline btn-sm" onclick="switchView('explore-clubs')">
+                                View All Clubs <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        <div class="clubs-grid" id="dashboard-recommended-clubs">
+                            <!-- Populated dynamically by student.js -->
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Events Section -->
+                    <div class="dashboard-row-section">
+                        <div class="section-title-bar">
+                            <h3><i class="fa-regular fa-calendar-check text-primary"></i> Upcoming Campus Events</h3>
+                            <button type="button" class="btn btn-outline btn-sm" onclick="switchView('upcoming-events')">
+                                View All Events <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        <div class="events-grid" id="dashboard-upcoming-events">
+                            <!-- Populated dynamically by student.js -->
+                        </div>
+                    </div>
+
+                </section>
+
+                <!-- VIEW 2: EXPLORE CLUBS -->
+                <section class="dashboard-view" id="view-explore-clubs">
+                    <div class="filter-bar">
+                        <div class="search-box">
+                            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                            <input type="text" id="student-club-search-input" placeholder="Search clubs by name or keywords...">
+                        </div>
+                        <div class="category-pills">
+                            <button type="button" class="pill-btn active" data-category="all">All</button>
+                            <button type="button" class="pill-btn" data-category="Technical">Technical</button>
+                            <button type="button" class="pill-btn" data-category="Cultural">Cultural</button>
+                            <button type="button" class="pill-btn" data-category="Literary">Literary</button>
+                            <button type="button" class="pill-btn" data-category="Arts">Arts</button>
+                            <button type="button" class="pill-btn" data-category="Entrepreneurship">Entrepreneurship</button>
+                        </div>
+                    </div>
+
+                    <div class="clubs-grid" id="student-all-clubs-grid">
+                        <!-- Populated by student.js -->
+                    </div>
+                </section>
+
+                <!-- VIEW 3: MY CLUBS -->
+                <section class="dashboard-view" id="view-my-clubs">
+                    <div class="section-header" style="text-align: left; margin-bottom: 1.5rem;">
+                        <h3 class="font-bold">Your Active Club Memberships</h3>
+                        <p class="text-muted">Clubs you have officially joined. You can participate in internal meetings and project teams.</p>
+                    </div>
+
+                    <div class="clubs-grid" id="student-my-clubs-grid">
+                        <!-- Populated by student.js -->
+                    </div>
+                </section>
+
+                <!-- VIEW 4: UPCOMING EVENTS -->
+                <section class="dashboard-view" id="view-upcoming-events">
+                    <div class="filter-bar">
+                        <div class="search-box">
+                            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                            <input type="text" id="student-event-search-input" placeholder="Search events by title, venue, or host club...">
+                        </div>
+                        <div class="category-pills">
+                            <button type="button" class="pill-btn active" data-category="all">All</button>
+                            <button type="button" class="pill-btn" data-category="Technical">Technical</button>
+                            <button type="button" class="pill-btn" data-category="Cultural">Cultural</button>
+                            <button type="button" class="pill-btn" data-category="Literary">Literary</button>
+                            <button type="button" class="pill-btn" data-category="Arts">Arts</button>
+                            <button type="button" class="pill-btn" data-category="Entrepreneurship">Entrepreneurship</button>
+                        </div>
+                    </div>
+
+                    <div class="events-grid" id="student-all-events-grid">
+                        <!-- Populated by student.js -->
+                    </div>
+                </section>
+
+                <!-- VIEW 5: MY REGISTRATIONS -->
+                <section class="dashboard-view" id="view-my-registrations">
+                    <div class="section-header" style="text-align: left; margin-bottom: 1.5rem;">
+                        <h3 class="font-bold">My Event Registrations</h3>
+                        <p class="text-muted">Review your confirmed spots and registration statuses for upcoming campus events.</p>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Event & Host Club</th>
+                                    <th>Event Date</th>
+                                    <th>Venue</th>
+                                    <th>Registered On</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="student-registrations-tbody">
+                                <!-- Populated by student.js -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- VIEW 6: NOTIFICATIONS -->
+                <section class="dashboard-view" id="view-notifications">
+                    <div class="section-header" style="text-align: left; margin-bottom: 1.5rem;">
+                        <h3 class="font-bold">Official Campus Announcements</h3>
+                        <p class="text-muted">Important notices, call for volunteers, and updates broadcasted by faculty coordinators.</p>
+                    </div>
+
+                    <div id="student-notifications-list">
+                        <!-- Populated by student.js -->
+                    </div>
+                </section>
+
+                <!-- VIEW 7: STUDENT PROFILE -->
+                <section class="dashboard-view" id="view-profile">
+                    <div class="section-header" style="text-align: left; margin-bottom: 1.5rem;">
+                        <h3 class="font-bold">Student Profile Details</h3>
+                        <p class="text-muted">View and modify your college profile information. Changes are preserved in LocalStorage.</p>
+                    </div>
+
+                    <div class="profile-card">
+                        <div style="display:flex; align-items:center; gap:1.5rem; margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid var(--border-color);">
+                            <div class="profile-avatar-large">AS</div>
+                            <div>
+                                <h3 style="font-size:1.35rem; font-weight:800; color:var(--slate-900);">Aarav Sharma</h3>
+                                <p class="text-muted" style="margin:0;">1st-Year B.Tech CSE • Micro Project Demonstration</p>
+                                <span class="badge badge-student" style="margin-top:0.4rem;">Enrolled Student</span>
+                            </div>
+                        </div>
+
+                        <form id="student-profile-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="profile-name">Full Student Name</label>
+                                    <input type="text" id="profile-name" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="profile-email">College Email Address (Read-only)</label>
+                                    <input type="email" id="profile-email" class="form-control" disabled style="background:var(--slate-100);">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="profile-branch">Department / Branch</label>
+                                    <input type="text" id="profile-branch" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="profile-year">Academic Year</label>
+                                    <input type="text" id="profile-year" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="profile-roll">College Roll Number</label>
+                                    <input type="text" id="profile-roll" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Active Club Memberships</label>
+                                    <input type="text" class="form-control" value="IEEE Branch, Coding Club" disabled style="background:var(--slate-100);">
+                                </div>
+                            </div>
+
+                            <div style="text-align: right; margin-top: 1rem;">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fa-solid fa-floppy-disk"></i> Save Profile Changes
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/student.js"></script>
+</body>
+</html>

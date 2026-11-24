@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dean / Super Admin Portal – Club Corner</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/dean.css">
+</head>
+<body class="dean-login-body">
+
+    <!-- Top Minimal Navigation -->
+    <header class="site-header" style="background: transparent; border-bottom: 1px solid rgba(255,255,255,0.08);">
+        <div class="container navbar">
+            <a href="index.html" class="brand-logo" style="color: #ffffff;">
+                <div class="brand-icon" style="background: linear-gradient(135deg, #d97706 0%, #b45309 100%);">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <span>Club Corner</span>
+            </a>
+            <div class="nav-actions">
+                <a href="login.html" class="btn btn-outline btn-sm" style="color: #cbd5e1; border-color: rgba(255,255,255,0.2);">
+                    <i class="fa-solid fa-users"></i> Student & Faculty Login
+                </a>
+                <a href="index.html" class="btn btn-outline btn-sm" style="color: #cbd5e1; border-color: rgba(255,255,255,0.2);">
+                    <i class="fa-solid fa-arrow-left"></i> Home
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dean Login Centered Card -->
+    <div class="login-container-wrapper">
+        <div class="dean-login-card">
+            
+            <div class="login-header">
+                <div class="dean-crest-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h2 class="login-title" style="font-size: 1.75rem;">Dean Administration</h2>
+                <p class="login-subtitle">Executive Super Admin & Academic Council Portal</p>
+            </div>
+
+            <!-- Institutional Security Warning Banner -->
+            <div class="dean-security-alert-box">
+                <i class="fa-solid fa-shield-cat text-warning" style="font-size: 1.25rem;"></i>
+                <div>
+                    <strong>Restricted Institutional Access:</strong> This interface is reserved exclusively for the Office of the Dean. Public registration is disabled.
+                </div>
+            </div>
+
+            <!-- Dean Login Form -->
+            <form id="dean-login-form" class="login-form" novalidate>
+                <div class="form-group">
+                    <label class="form-label" for="dean-email">
+                        <i class="fa-solid fa-envelope"></i> Administrative Email
+                    </label>
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-at"></i>
+                        <input type="email" id="dean-email" class="form-control" placeholder="dean@college.com" required autocomplete="email">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="dean-password">
+                        <i class="fa-solid fa-lock"></i> Master Password
+                    </label>
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-key"></i>
+                        <input type="password" id="dean-password" class="form-control" placeholder="••••••••" required autocomplete="current-password">
+                        <button type="button" class="password-toggle-btn" id="password-toggle-btn" aria-label="Toggle password visibility">
+                            <i class="fa-regular fa-eye" id="toggle-eye-icon"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-lg w-100" id="dean-submit-btn" style="margin-top: 1.25rem; background: #d97706; color: #ffffff; box-shadow: 0 4px 14px rgba(217, 119, 6, 0.35);">
+                    <i class="fa-solid fa-fingerprint"></i> Authenticate as Dean
+                </button>
+            </form>
+
+            <!-- 1-Click Demo Dean Account Box -->
+            <div class="demo-accounts-box" style="background: #fdfbf7; border-color: #fde68a;">
+                <div class="demo-accounts-title" style="color: #92400e;">
+                    <i class="fa-solid fa-bolt text-warning"></i> Super Admin Demo Credentials
+                </div>
+                <button type="button" class="demo-pill-btn w-100" id="demo-dean-btn" style="border-color: #fde68a;">
+                    <span class="demo-pill-role" style="color: #b45309;">
+                        <i class="fa-solid fa-user-shield"></i> Office of the Dean (Super Admin)
+                    </span>
+                    <span class="demo-pill-email">dean@college.com &bull; Pass: dean123</span>
+                </button>
+            </div>
+
+            <div class="login-back-link" style="margin-top: 1.25rem;">
+                <span class="text-muted" style="font-size: 0.85rem;">Are you a student or faculty member?</span>
+                <a href="login.html" style="font-weight: 700; color: var(--primary); margin-left: 0.25rem;">
+                    Go to Standard Login &rarr;
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Only auto-redirect if already logged in as Dean
+            auth.redirectIfLoggedIn('dean');
+
+            // If logged in as another role, show clear notice
+            const currentUser = auth.getCurrentUser();
+            if (currentUser && currentUser.role !== 'dean') {
+                const notice = document.createElement('div');
+                notice.style.cssText = 'background:#f1f5f9; border:1px solid #cbd5e1; border-radius:8px; padding:0.6rem 0.85rem; font-size:0.8rem; margin-bottom:1rem; display:flex; align-items:center; justify-content:space-between; color:#334155;';
+                notice.innerHTML = `
+                    <span>Currently signed in as: <strong>${currentUser.name}</strong> (${currentUser.role})</span>
+                    <button type="button" class="btn btn-outline btn-sm" style="padding:0.2rem 0.5rem; font-size:0.75rem;" onclick="auth.logout()">Sign Out</button>
+                `;
+                const form = document.getElementById('dean-login-form');
+                if (form) form.parentNode.insertBefore(notice, form);
+            }
+
+            const emailInput = document.getElementById('dean-email');
+            const passwordInput = document.getElementById('dean-password');
+            const toggleBtn = document.getElementById('password-toggle-btn');
+            const eyeIcon = document.getElementById('toggle-eye-icon');
+
+            // Autofill Dean Demo
+            document.getElementById('demo-dean-btn').addEventListener('click', () => {
+                emailInput.value = 'dean@college.com';
+                passwordInput.value = 'dean123';
+                auth.showToast('Dean credentials autofilled!', 'info');
+            });
+
+            // Password visibility toggle
+            toggleBtn.addEventListener('click', () => {
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    eyeIcon.className = 'fa-regular fa-eye-slash';
+                } else {
+                    passwordInput.type = 'password';
+                    eyeIcon.className = 'fa-regular fa-eye';
+                }
+            });
+
+            // Form submission
+            document.getElementById('dean-login-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = emailInput.value.trim();
+                const password = passwordInput.value;
+
+                if (!email || !password) {
+                    auth.showToast('Please provide both administrative email and password.', 'warning');
+                    return;
+                }
+
+                // Authenticate strictly with role: 'dean'
+                const result = auth.login(email, password, 'dean');
+                if (result.success) {
+                    auth.showToast(`Dean Authentication Verified: Welcome, ${result.user.name}!`, 'success');
+                    setTimeout(() => {
+                        window.location.href = 'dean-dashboard.html';
+                    }, 600);
+                } else {
+                    auth.showToast(result.message, 'error', 4500);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

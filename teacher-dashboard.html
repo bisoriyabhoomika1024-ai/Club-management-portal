@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Admin Dashboard – Club Corner</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/teacher.css">
+</head>
+<body>
+
+    <div class="teacher-app-wrapper">
+
+        <!-- Teacher Executive Dark Sidebar -->
+        <aside class="teacher-sidebar" id="teacher-sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="teacher-brand-logo">
+                    <div class="teacher-brand-icon">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <span>Club Corner</span>
+                </a>
+                <span class="admin-badge">Faculty</span>
+            </div>
+
+            <!-- Faculty Mini Profile -->
+            <div class="faculty-sidebar-profile">
+                <div class="faculty-avatar" id="faculty-avatar-display">PR</div>
+                <div class="faculty-meta">
+                    <div class="name" id="faculty-name-display">Dr. Priya Raman</div>
+                    <div class="role" id="faculty-role-display">Club Convener</div>
+                </div>
+            </div>
+
+            <!-- Sidebar Navigation Menu -->
+            <nav class="sidebar-menu">
+                <a href="#dashboard" class="menu-item active" data-view="dashboard">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#manage-clubs" class="menu-item" data-view="manage-clubs">
+                    <i class="fa-solid fa-network-wired"></i>
+                    <span>Manage Clubs</span>
+                </a>
+                <a href="#manage-events" class="menu-item" data-view="manage-events">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span>Manage Events</span>
+                </a>
+                <a href="#student-registrations" class="menu-item" data-view="student-registrations">
+                    <i class="fa-solid fa-id-card-clip"></i>
+                    <span>Student Registrations</span>
+                </a>
+                <a href="#announcements" class="menu-item" data-view="announcements">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Announcements</span>
+                </a>
+                <a href="#reports" class="menu-item" data-view="reports">
+                    <i class="fa-solid fa-file-waveform"></i>
+                    <span>Reports</span>
+                </a>
+                <a href="#profile" class="menu-item" data-view="profile">
+                    <i class="fa-solid fa-user-shield"></i>
+                    <span>Profile</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button type="button" class="btn btn-outline w-100" id="teacher-logout-btn" style="color:#ef4444; border-color:#334155;">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Admin Area -->
+        <div class="teacher-main">
+
+            <!-- Top Administrative Navigation Bar -->
+            <header class="teacher-topbar">
+                <div class="teacher-topbar-left">
+                    <button type="button" class="mobile-sidebar-toggle" id="mobile-teacher-sidebar-toggle" aria-label="Toggle sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <h2 class="teacher-section-title" id="teacher-current-title">Faculty Admin Dashboard</h2>
+                </div>
+
+                <div class="teacher-topbar-right">
+                    <div class="admin-quick-actions">
+                        <button type="button" class="btn btn-sm btn-outline" onclick="openAddClubModal()">
+                            <i class="fa-solid fa-plus"></i> Add Club
+                        </button>
+                        <button type="button" class="btn btn-sm" style="background:#0d9488; color:#fff;" onclick="openAddEventModal()">
+                            <i class="fa-solid fa-calendar-plus"></i> Create Event
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content Panels -->
+            <main class="teacher-content-body">
+
+                <!-- 1. DASHBOARD OVERVIEW -->
+                <section class="dashboard-view active" id="teacher-view-dashboard">
+                    
+                    <!-- Welcome Hero Admin Banner -->
+                    <div class="teacher-welcome-banner">
+                        <div class="teacher-banner-text">
+                            <h2>Welcome, <span id="teacher-welcome-name">Dr. Priya Raman</span>!</h2>
+                            <p>
+                                Student Clubs Oversight & Administrative Panel. Review pending student registrations, 
+                                publish campus announcements, and supervise departmental club activities.
+                            </p>
+                        </div>
+                        <div>
+                            <span class="badge" style="background: rgba(13,148,136,0.25); color: #2dd4bf; border: 1px solid rgba(13,148,136,0.5); padding: 0.5rem 1rem; font-size: 0.85rem;">
+                                <i class="fa-solid fa-shield-check"></i> Convener Status: Active
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Statistics Cards -->
+                    <div class="teacher-metrics-grid">
+                        <div class="admin-metric-card" onclick="switchTeacherView('manage-clubs')" style="cursor:pointer;">
+                            <div class="metric-data">
+                                <h4 id="admin-stat-clubs">8</h4>
+                                <p>Total Clubs</p>
+                            </div>
+                            <div class="metric-icon-box metric-teal">
+                                <i class="fa-solid fa-network-wired"></i>
+                            </div>
+                        </div>
+
+                        <div class="admin-metric-card">
+                            <div class="metric-data">
+                                <h4 id="admin-stat-students">142</h4>
+                                <p>Total Enrolled Students</p>
+                            </div>
+                            <div class="metric-icon-box metric-blue">
+                                <i class="fa-solid fa-user-graduate"></i>
+                            </div>
+                        </div>
+
+                        <div class="admin-metric-card" onclick="switchTeacherView('manage-events')" style="cursor:pointer;">
+                            <div class="metric-data">
+                                <h4 id="admin-stat-events">8</h4>
+                                <p>Upcoming Events</p>
+                            </div>
+                            <div class="metric-icon-box metric-purple">
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </div>
+                        </div>
+
+                        <div class="admin-metric-card" onclick="switchTeacherView('student-registrations')" style="cursor:pointer;">
+                            <div class="metric-data">
+                                <h4 id="admin-stat-regs">5</h4>
+                                <p>Total Registrations</p>
+                            </div>
+                            <div class="metric-icon-box metric-amber">
+                                <i class="fa-solid fa-id-card-clip"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Registrations Panel -->
+                    <div class="admin-card-panel">
+                        <div class="panel-header">
+                            <h3 class="panel-title">
+                                <i class="fa-solid fa-clock-rotate-left text-primary"></i> Recent Student Registrations
+                            </h3>
+                            <button type="button" class="btn btn-outline btn-sm" onclick="switchTeacherView('student-registrations')">
+                                View All Registrations <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        <div class="panel-body" style="padding:0;">
+                            <div class="table-responsive" style="border:none; border-radius:0; box-shadow:none;">
+                                <table class="custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Student</th>
+                                            <th>Event Requested</th>
+                                            <th>Registered On</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="teacher-recent-regs-tbody">
+                                        <!-- Populated by teacher.js -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+                <!-- 2. MANAGE CLUBS -->
+                <section class="dashboard-view" id="teacher-view-manage-clubs">
+                    <div class="admin-card-panel">
+                        <div class="panel-header">
+                            <h3 class="panel-title">
+                                <i class="fa-solid fa-network-wired text-primary"></i> Club Management Directory
+                            </h3>
+                            <button type="button" class="btn btn-primary btn-sm" onclick="openAddClubModal()">
+                                <i class="fa-solid fa-plus"></i> Add New Club
+                            </button>
+                        </div>
+                        <div class="panel-body">
+                            <div class="filter-bar" style="margin-bottom: 1.25rem;">
+                                <div class="search-box">
+                                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                                    <input type="text" id="admin-club-search" placeholder="Filter clubs by name, domain, or president...">
+                                </div>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table class="custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Club Details</th>
+                                            <th>Category</th>
+                                            <th>Student President</th>
+                                            <th>Faculty Coordinator</th>
+                                            <th>Members</th>
+                                            <th>Admin Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="manage-clubs-tbody">
+                                        <!-- Populated by teacher.js -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. MANAGE EVENTS -->
+                <section class="dashboard-view" id="teacher-view-manage-events">
+                    <div class="admin-card-panel">
+                        <div class="panel-header">
+                            <h3 class="panel-title">
+                                <i class="fa-solid fa-calendar-check text-primary"></i> Campus Events & Hackathons Management
+                            </h3>
+                            <button type="button" class="btn btn-sm" style="background:#0d9488; color:#fff;" onclick="openAddEventModal()">
+                                <i class="fa-solid fa-calendar-plus"></i> Create New Event
+                            </button>
+                        </div>
+                        <div class="panel-body">
+                            <div class="filter-bar" style="margin-bottom: 1.25rem;">
+                                <div class="search-box">
+                                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                                    <input type="text" id="admin-event-search" placeholder="Search events by title or venue...">
+                                </div>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table class="custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Event Name & Details</th>
+                                            <th>Organizing Club</th>
+                                            <th>Date & Time</th>
+                                            <th>Venue</th>
+                                            <th>Seat Cap</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="manage-events-tbody">
+                                        <!-- Populated by teacher.js -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. STUDENT REGISTRATIONS -->
+                <section class="dashboard-view" id="teacher-view-student-registrations">
+                    <div class="admin-card-panel">
+                        <div class="panel-header">
+                            <h3 class="panel-title">
+                                <i class="fa-solid fa-id-card-clip text-primary"></i> Student Registrations Roster
+                            </h3>
+                            <div>
+                                <select id="admin-reg-status-filter" class="form-control" style="width: auto; display: inline-block;">
+                                    <option value="all">All Statuses</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="approved">Approved</option>
+                                    <option value="rejected">Rejected</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="filter-bar" style="margin-bottom: 1.25rem;">
+                                <div class="search-box">
+                                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                                    <input type="text" id="admin-reg-search" placeholder="Search student name, email, or event...">
+                                </div>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table class="custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Student Name & Roll</th>
+                                            <th>Email Address</th>
+                                            <th>Event & Host Club</th>
+                                            <th>Registration Date</th>
+                                            <th>Status</th>
+                                            <th>Review Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="admin-registrations-tbody">
+                                        <!-- Populated by teacher.js -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 5. ANNOUNCEMENTS -->
+                <section class="dashboard-view" id="teacher-view-announcements">
+                    <div class="admin-card-panel mb-4">
+                        <div class="panel-header">
+                            <h3 class="panel-title">
+                                <i class="fa-solid fa-bullhorn text-primary"></i> Broadcast New Announcement
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <form id="create-announcement-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label" for="ann-title-input">Announcement Title</label>
+                                        <input type="text" id="ann-title-input" class="form-control" placeholder="e.g. Call for Volunteers: Annual Tech Fest" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="ann-target-select">Audience / Target Group</label>
+                                        <select id="ann-target-select" class="form-control">
+                                            <option value="All Students">All Students</option>
+                                            <option value="1st-Year Students">1st-Year Students</option>
+                                            <option value="Club Members">Club Members Only</option>
+                                            <option value="Executive Committee">Executive Committee</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="ann-message-input">Detailed Message / Instructions</label>
+                                    <textarea id="ann-message-input" class="form-control" rows="3" placeholder="Write announcement details..." required></textarea>
+                                </div>
+                                <div style="text-align: right;">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fa-solid fa-paper-plane"></i> Publish Announcement
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="admin-card-panel">
+                        <div class="panel-header">
+                            <h3 class="panel-title">
+                                <i class="fa-solid fa-list-check text-primary"></i> Active Announcements
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <div id="admin-announcements-list">
+                                <!-- Populated by teacher.js -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 6. REPORTS -->
+                <section class="dashboard-view" id="teacher-view-reports">
+                    <div class="admin-card-panel">
+                        <div class="panel-header">
+                            <h3 class="panel-title">
+                                <i class="fa-solid fa-file-waveform text-primary"></i> Club Participation Analytics & Reports
+                            </h3>
+                            <button type="button" class="btn btn-outline btn-sm" id="export-report-btn">
+                                <i class="fa-solid fa-file-csv"></i> Download CSV Export
+                            </button>
+                        </div>
+                        <div class="panel-body">
+                            <div class="reports-summary-grid">
+                                <div class="report-summary-box">
+                                    <h4>Total Active Clubs</h4>
+                                    <div class="report-value" id="rep-total-clubs">8</div>
+                                </div>
+                                <div class="report-summary-box">
+                                    <h4>Scheduled Events</h4>
+                                    <div class="report-value" id="rep-total-events">8</div>
+                                </div>
+                                <div class="report-summary-box">
+                                    <h4>Total Registrations</h4>
+                                    <div class="report-value" id="rep-total-regs">5</div>
+                                </div>
+                            </div>
+
+                            <h4 class="font-bold mb-3" style="font-size:1.1rem; color:var(--slate-900);">Societies Membership Distribution</h4>
+                            <div class="table-responsive">
+                                <table class="custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Club Name</th>
+                                            <th>Category</th>
+                                            <th>Active Membership</th>
+                                            <th>Student President</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="rep-clubs-breakdown-tbody">
+                                        <!-- Populated by teacher.js -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 7. PROFILE -->
+                <section class="dashboard-view" id="teacher-view-profile">
+                    <div class="admin-card-panel" style="max-width: 800px;">
+                        <div class="panel-header">
+                            <h3 class="panel-title">
+                                <i class="fa-solid fa-user-shield text-primary"></i> Faculty Coordinator Profile
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <form id="teacher-profile-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label" for="teacher-profile-name">Faculty Name</label>
+                                        <input type="text" id="teacher-profile-name" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="teacher-profile-email">College Email (Read-only)</label>
+                                        <input type="email" id="teacher-profile-email" class="form-control" disabled style="background:var(--slate-100);">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label" for="teacher-profile-dept">Department</label>
+                                        <input type="text" id="teacher-profile-dept" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="teacher-profile-desig">Designation</label>
+                                        <input type="text" id="teacher-profile-desig" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div style="text-align: right; margin-top: 1rem;">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fa-solid fa-floppy-disk"></i> Update Faculty Details
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- MODAL: ADD / EDIT CLUB -->
+    <div class="modal-overlay" id="club-modal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title" id="club-modal-title">
+                    <i class="fa-solid fa-plus-circle text-primary"></i> Add New Club
+                </h3>
+                <button type="button" class="modal-close" id="club-modal-close">&times;</button>
+            </div>
+            <form id="club-form">
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="club-name-input">Club Name</label>
+                            <input type="text" id="club-name-input" class="form-control" placeholder="e.g. AI & Robotics Club" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="club-category-input">Category</label>
+                            <select id="club-category-input" class="form-control">
+                                <option value="Technical">Technical</option>
+                                <option value="Cultural">Cultural</option>
+                                <option value="Literary">Literary</option>
+                                <option value="Arts">Art & Design</option>
+                                <option value="Entrepreneurship">Entrepreneurship</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="club-desc-input">Short Summary Description</label>
+                        <input type="text" id="club-desc-input" class="form-control" placeholder="One sentence summary for club cards" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="club-full-desc-input">Full Description & Mission</label>
+                        <textarea id="club-full-desc-input" class="form-control" rows="3" placeholder="Detailed vision and overview of the club..."></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="club-president-input">Student President</label>
+                            <input type="text" id="club-president-input" class="form-control" placeholder="e.g. Aryan Mathur (4th Year, CSE)">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="club-vp-input">Vice-President</label>
+                            <input type="text" id="club-vp-input" class="form-control" placeholder="e.g. Sneha Patel (3rd Year, ECE)">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="club-faculty-input">Faculty Coordinator</label>
+                            <input type="text" id="club-faculty-input" class="form-control" placeholder="e.g. Dr. Priya Raman">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="club-email-input">Official Contact Email</label>
+                            <input type="email" id="club-email-input" class="form-control" placeholder="e.g. club@college.edu">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="club-phone-input">Contact Phone</label>
+                        <input type="text" id="club-phone-input" class="form-control" placeholder="e.g. +91 98765 43210">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="club-modal-cancel">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="club-modal-save">Save Club</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: ADD / EDIT EVENT -->
+    <div class="modal-overlay" id="event-modal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title" id="event-modal-title">
+                    <i class="fa-solid fa-calendar-plus text-primary"></i> Create College Event
+                </h3>
+                <button type="button" class="modal-close" id="event-modal-close">&times;</button>
+            </div>
+            <form id="event-form">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="form-label" for="event-title-input">Event Title</label>
+                        <input type="text" id="event-title-input" class="form-control" placeholder="e.g. Hackathon 2026: ByteSprint" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="event-club-select">Hosting Club</label>
+                            <select id="event-club-select" class="form-control" required>
+                                <!-- Populated dynamically from clubs -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="event-category-select">Category</label>
+                            <select id="event-category-select" class="form-control">
+                                <option value="Technical">Technical</option>
+                                <option value="Cultural">Cultural</option>
+                                <option value="Literary">Literary</option>
+                                <option value="Arts">Arts</option>
+                                <option value="Entrepreneurship">Entrepreneurship</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="event-date-input">Event Date</label>
+                            <input type="date" id="event-date-input" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="event-time-input">Event Time</label>
+                            <input type="text" id="event-time-input" class="form-control" placeholder="e.g. 10:00 AM - 04:00 PM" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="event-venue-input">Venue</label>
+                            <input type="text" id="event-venue-input" class="form-control" placeholder="e.g. Main Auditorium / CS Lab 3" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="event-seats-input">Max Seat Capacity</label>
+                            <input type="number" id="event-seats-input" class="form-control" value="100" min="10" max="1000">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="event-desc-input">Event Description</label>
+                        <textarea id="event-desc-input" class="form-control" rows="3" placeholder="Brief about the event, rules, eligibility, prizes..." required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="event-modal-cancel">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="event-modal-save">Save Event</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/teacher.js"></script>
+</body>
+</html>
